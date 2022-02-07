@@ -39,6 +39,28 @@ const App: FunctionComponent = (): JSX.Element => {
     toggle();
   };
 
+  // (window as any).ethereum.on("accountsChanged", async (accounts: any) => {
+  //   if (accounts.length > 0) {
+  //     // const { accessToken }: any = auth;
+  //     // console.log(accessToken);
+  //     payload = jwtDecode<JwtDecoded>(accessToken);
+  //     // payload.payload.publicAddress = accounts[0];
+  //     // setState({ auth: { accessToken: accounts[0] } });
+  //     // window.location.reload();
+  //     console.log(accounts);
+  //   } else {
+  //     localStorage.removeItem(LS_KEY);
+  //     setState({ auth: undefined });
+  //     window.location.reload();
+  //   }
+  //   // const accessToken: any = auth?.accessToken;
+
+  //   // if (accessToken) {
+  //   //   payload.payload.publicAddress = accounts[0];
+  //   //   // payload = jwtDecode<JwtDecoded>(accessToken);
+  //   // }
+  // });
+
   const showDetails = () => {
     setState({ isActive: !isActive, auth: auth });
     // isActive = !isActive;

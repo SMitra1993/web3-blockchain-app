@@ -6,15 +6,21 @@ import "./connect-wallet-modal.css";
 import Web3 from "web3";
 import { Auth } from "../../../Interface/auth-interface";
 import APIService from "../../../Services/api-service";
+import { State } from "../../../Interface/state-interface";
+
+const LS_KEY = "login-with-metamask:auth";
 
 interface Props {
   onLoggedIn: (auth: Auth) => void;
 }
 
 let web3: Web3 | undefined = undefined;
-
 export const ConnectWalletModal = ({ onLoggedIn }: Props): JSX.Element => {
   const [loading, setLoading] = useState(false);
+
+  const [state, setState] = useState<State>();
+
+  useEffect(() => {});
 
   const handleClick = async () => {
     // Check if MetaMask is installed
@@ -297,6 +303,28 @@ export const ConnectWalletModal = ({ onLoggedIn }: Props): JSX.Element => {
       }
     }
   };
+
+  (window as any).ethereum.on("disconnect", async () => {
+    localStorage.removeItem(LS_KEY);
+    setState({ auth: undefined });
+    window.location.reload();
+  });
+
+  (window as any).ethereum.on("chainChanged", async (chainId: string) => {
+    if (isNaN(+chainId)) {
+      if (chainId !== "250") {
+        localStorage.removeItem(LS_KEY);
+        setState({ auth: undefined });
+        window.location.reload();
+      }
+    } else {
+      if (web3?.utils.toHex("250") !== chainId) {
+        localStorage.removeItem(LS_KEY);
+        setState({ auth: undefined });
+        window.location.reload();
+      }
+    }
+  });
 
   useEffect(() => {
     // Access token is stored in localstorage
