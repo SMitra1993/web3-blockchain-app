@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from "react";
-import "./App.css";
+import "./App.scss";
 import wallet from "./Assets/Images/wallet.svg";
 import downArrow from "./Assets/Images/down-arrow.svg";
 import logOut from "./Assets/Images/log-out.svg";
-import "./Assets/Styles/component-styles.css";
+import "./Assets/Styles/component-styles.scss";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Component/Home/Home";
 import { useModal } from "./Hook/useModal";
@@ -83,7 +83,7 @@ const App: FunctionComponent = (): JSX.Element => {
   return (
     <div className="App">
       <Router>
-        <div>
+        <div className="container-format">
           <nav>
             <div className="navigation-header-format">
               {/* <div className="col-lg-3 col-md-3 col-sm-3"></div> */}
@@ -198,7 +198,7 @@ const App: FunctionComponent = (): JSX.Element => {
               <Link to="/foo">Foo</Link>
               <Link to="/bar">Bar</Link> */}
           </nav>
-          <div className="App-intro">
+          <div className={auth ? "profile-information-box-format" : ''}>
             {auth ? (
               <Profile auth={auth} onLoggedOut={handleLoggedOut} />
             ) : null}

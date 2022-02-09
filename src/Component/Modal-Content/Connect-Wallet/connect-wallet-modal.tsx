@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useState } from "react";
 import { ConfirmationModalProps } from "../../../Interface/confirm-modal-props";
 import { Message } from "./connect-wallet-modal-style";
 import metmaskLogo from "../../../Assets/Images/metamask.png";
-import "./connect-wallet-modal.css";
+import "./connect-wallet-modal.scss";
 import Web3 from "web3";
 import { Auth } from "../../../Interface/auth-interface";
 import APIService from "../../../Services/api-service";

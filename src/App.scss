@@ -185,3 +185,31 @@
   -webkit-box-pack: justify;
   justify-content: space-between;
 }
+
+.container-format {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-information-box-format {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border: 0px;
+  border-radius: 16px;
+  box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px 0px inset;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  line-height: 1;
+  opacity: 1;
+  outline: 0px;
+  transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
+  padding: 2%;
+  background-color: hsl(284deg 100% 47%); /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, hsl(284deg 100% 90%), hsl(284deg 100% 80%));
+}

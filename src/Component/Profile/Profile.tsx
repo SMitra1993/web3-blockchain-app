@@ -1,4 +1,4 @@
-import "./Profile.css";
+import "./Profile.scss";
 
 import jwtDecode from "jwt-decode";
 //akash
@@ -37,7 +37,7 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
   useEffect(() => {
     const { accessToken }: any = auth;
     const {
-      payload: { id },	
+      payload: { id },
     } = jwtDecode<JwtDecoded>(accessToken);
 
     fetch(`http://localhost:8006/api/users/${id}`, {
@@ -50,40 +50,40 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
       .catch(window.alert);
   }, []);
 
-//   const handleChange = ({
-//     target: { value },
-//   }: React.ChangeEvent<HTMLInputElement>) => {
-//     setState({ ...state, username: value });
-//   };
+  //   const handleChange = ({
+  //     target: { value },
+  //   }: React.ChangeEvent<HTMLInputElement>) => {
+  //     setState({ ...state, username: value });
+  //   };
 
-//   const handleSubmit = () => {
-//     const { accessToken } = auth;
-//     const { user, username } = state;
+  //   const handleSubmit = () => {
+  //     const { accessToken } = auth;
+  //     const { user, username } = state;
 
-//     setState({ ...state, loading: true });
+  //     setState({ ...state, loading: true });
 
-//     if (!user) {
-//       window.alert(
-//         "The user id has not been fetched yet. Please try again in 5 seconds."
-//       );
-//       return;
-//     }
+  //     if (!user) {
+  //       window.alert(
+  //         "The user id has not been fetched yet. Please try again in 5 seconds."
+  //       );
+  //       return;
+  //     }
 
-//     fetch(`http://localhost:8006/api/users/${user.id}`, {
-//       body: JSON.stringify({ username }),
-//       headers: {
-//         Authorization: `Bearer ${accessToken}`,
-//         "Content-Type": "application/json",
-//       },
-//       method: "PATCH",
-//     })
-//       .then((response) => response.json())
-//       .then((user) => setState({ ...state, loading: false, user }))
-//       .catch((err) => {
-//         window.alert(err);
-//         setState({ ...state, loading: false });
-//       });
-//   };
+  //     fetch(`http://localhost:8006/api/users/${user.id}`, {
+  //       body: JSON.stringify({ username }),
+  //       headers: {
+  //         Authorization: `Bearer ${accessToken}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //       method: "PATCH",
+  //     })
+  //       .then((response) => response.json())
+  //       .then((user) => setState({ ...state, loading: false, user }))
+  //       .catch((err) => {
+  //         window.alert(err);
+  //         setState({ ...state, loading: false });
+  //       });
+  //   };
 
   const { accessToken }: any = auth;
 
@@ -94,16 +94,20 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
   const { loading, user } = state;
 
   const username = user && user.username;
+  console.log(user);
 
   return (
-    <div className="Profile">
-      <p>
-        Logged in as {publicAddress}
-      </p>
-      <div>
-        My username is {username ? <pre>{username}</pre> : "not set."} My
-        publicAddress is <pre>{publicAddress}</pre>
-      </div>
+    <div className="profile-infromation-format">
+      {/* <p>Logged in as {publicAddress}</p> */}
+      {/* My username is {username ? <pre>{username}</pre> : "not set."} My */}
+      <h2>
+        Connected to{" "}
+        {`${publicAddress.substring(0, 2)} ... ${publicAddress.substring(
+          publicAddress.length - 4,
+          publicAddress.length
+        )}`}
+      </h2>
+
       {/* <div>
         <label htmlFor="username">Change username: </label>
         <input name="username" onChange={handleChange} />
@@ -111,9 +115,9 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
           Submit
         </button>
       </div> */}
-      <p>
+      {/* <p>
         <button onClick={onLoggedOut}>Logout</button>
-      </p>
+      </p> */}
     </div>
   );
 };

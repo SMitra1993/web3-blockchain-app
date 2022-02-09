@@ -1,0 +1,16 @@
+.identicon {
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.profile-infromation-format {
+  z-index: 1;
+  // position: absolute;
+  // width: 100%;
+  // top: 0px;
+  // left: 50%;
+  transform: translate(10%, -10px);
+  // padding-left: 0px;
+  // padding-right: 0px;
+  float: left;
+}
