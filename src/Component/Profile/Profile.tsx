@@ -114,7 +114,7 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
           publicAddress.length
         )}`}
       </h2>
-      <Event />
+      
       {/* <div>
         <label htmlFor="username">Change username: </label>
         <input name="username" onChange={handleChange} />

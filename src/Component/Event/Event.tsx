@@ -35,7 +35,7 @@ export const Event = (): JSX.Element => {
   };
 
   return (
-    <div className="profile-infromation-format">
+    <div style={{ display: "inline-flex" }}>
       <form>
         <label>
           <input

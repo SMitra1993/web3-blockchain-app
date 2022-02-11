@@ -14,6 +14,7 @@ import { State } from "./Interface/state-interface";
 import { Auth } from "./Interface/auth-interface";
 import { Profile } from "./Component/Profile/Profile";
 import jwtDecode from "jwt-decode";
+import { Event } from "./Component/Event/Event";
 
 const LS_KEY = "login-with-metamask:auth";
 interface JwtDecoded {
@@ -83,9 +84,9 @@ const App: FunctionComponent = (): JSX.Element => {
   return (
     <div className="App">
       <Router>
-        <div className="container-format">
+        <div className="container-format container">
           <nav>
-            <div className="navigation-header-format">
+            <div className="navigation-header-format on">
               {/* <div className="col-lg-3 col-md-3 col-sm-3"></div> */}
               <div className="navigation-section-one">
                 <h1>Welcome to Blockchain World</h1>
@@ -198,11 +199,12 @@ const App: FunctionComponent = (): JSX.Element => {
               <Link to="/foo">Foo</Link>
               <Link to="/bar">Bar</Link> */}
           </nav>
-          <div className={auth ? "profile-information-box-format" : ''}>
+          <div className={auth ? "profile-information-box-format" : ""}>
             {auth ? (
               <Profile auth={auth} onLoggedOut={handleLoggedOut} />
             ) : null}
           </div>
+          <div style={{ width: "100%", display: "contents" }}>{auth ? <Event /> : null}</div>
           <Routes>
             <Route path="/home" element={<Home />} />
           </Routes>
