@@ -5,6 +5,8 @@ import jwtDecode from "jwt-decode";
 import React, { useState, useEffect } from "react";
 // import Blockies from "react-blockies";
 import { Auth } from "../../Interface/auth-interface";
+import SmartContractAPIService from "../../Services/smart-contract-api";
+import { Event } from "../Event/Event";
 
 interface Props {
   auth: Auth;
@@ -96,6 +98,11 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
   const username = user && user.username;
   console.log(user);
 
+  const handleSignup = async (publicAddress: string) =>
+    await SmartContractAPIService.sendTransaction(publicAddress).then(
+      (response) => response
+    );
+
   return (
     <div className="profile-infromation-format">
       {/* <p>Logged in as {publicAddress}</p> */}
@@ -107,7 +114,7 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
           publicAddress.length
         )}`}
       </h2>
-
+      <Event />
       {/* <div>
         <label htmlFor="username">Change username: </label>
         <input name="username" onChange={handleChange} />
