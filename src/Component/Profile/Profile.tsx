@@ -52,41 +52,6 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
       .catch(window.alert);
   }, []);
 
-  //   const handleChange = ({
-  //     target: { value },
-  //   }: React.ChangeEvent<HTMLInputElement>) => {
-  //     setState({ ...state, username: value });
-  //   };
-
-  //   const handleSubmit = () => {
-  //     const { accessToken } = auth;
-  //     const { user, username } = state;
-
-  //     setState({ ...state, loading: true });
-
-  //     if (!user) {
-  //       window.alert(
-  //         "The user id has not been fetched yet. Please try again in 5 seconds."
-  //       );
-  //       return;
-  //     }
-
-  //     fetch(`http://localhost:8006/api/users/${user.id}`, {
-  //       body: JSON.stringify({ username }),
-  //       headers: {
-  //         Authorization: `Bearer ${accessToken}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       method: "PATCH",
-  //     })
-  //       .then((response) => response.json())
-  //       .then((user) => setState({ ...state, loading: false, user }))
-  //       .catch((err) => {
-  //         window.alert(err);
-  //         setState({ ...state, loading: false });
-  //       });
-  //   };
-
   const { accessToken }: any = auth;
 
   const {
@@ -114,7 +79,7 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
           publicAddress.length
         )}`}
       </h2>
-      
+
       {/* <div>
         <label htmlFor="username">Change username: </label>
         <input name="username" onChange={handleChange} />

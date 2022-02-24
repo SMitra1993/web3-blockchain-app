@@ -15,6 +15,7 @@ import { Auth } from "./Interface/auth-interface";
 import { Profile } from "./Component/Profile/Profile";
 import jwtDecode from "jwt-decode";
 import { Event } from "./Component/Event/Event";
+import { EventTransaction } from "./Component/Event-Transaction/Event-Transaction";
 
 const LS_KEY = "login-with-metamask:auth";
 interface JwtDecoded {
@@ -207,6 +208,7 @@ const App: FunctionComponent = (): JSX.Element => {
           <div style={{ width: "100%", display: "contents" }}>{auth ? <Event /> : null}</div>
           <Routes>
             <Route path="/home" element={<Home />} />
+            
           </Routes>
         </div>
       </Router>
