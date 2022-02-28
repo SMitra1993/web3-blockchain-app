@@ -4,7 +4,12 @@ import wallet from "./Assets/Images/wallet.svg";
 import downArrow from "./Assets/Images/down-arrow.svg";
 import logOut from "./Assets/Images/log-out.svg";
 import "./Assets/Styles/component-styles.scss";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Home from "./Component/Home/Home";
 import { useModal } from "./Hook/useModal";
 import { Modal } from "./Component/Modal/modal";
@@ -84,7 +89,7 @@ const App: FunctionComponent = (): JSX.Element => {
 
   return (
     <div className="App">
-      <Router>
+      <BrowserRouter>
         <div className="container-format container">
           <nav>
             <div className="navigation-header-format on">
@@ -164,14 +169,6 @@ const App: FunctionComponent = (): JSX.Element => {
                       </div>
                     </div>
                   ) : (
-                    // <button
-                    //   onClick={handleLoggedOut}
-                    //   className="connect-wallet-button-format pushable"
-                    // >
-                    //   <span className="shadow"></span>
-                    //   <span className="edge"></span>
-                    //   <span className="front">Log Out</span>
-                    // </button>
                     <button
                       onClick={toggle}
                       className="connect-wallet-button-format pushable"
@@ -181,8 +178,6 @@ const App: FunctionComponent = (): JSX.Element => {
                       <span className="front">Connect Wallet</span>
                     </button>
                   )}
-
-                  {/* <button onClick={toggle}>Open modal</button> */}
                   <Modal
                     isShown={isShown}
                     hide={toggle}
@@ -195,23 +190,20 @@ const App: FunctionComponent = (): JSX.Element => {
                 {/* )} */}
               </div>
             </div>
-
-            {/* <Link to="/home">Home</Link>
-              <Link to="/foo">Foo</Link>
-              <Link to="/bar">Bar</Link> */}
           </nav>
-          <div className={auth ? "profile-information-box-format" : ""}>
-            {auth ? (
-              <Profile auth={auth} onLoggedOut={handleLoggedOut} />
-            ) : null}
-          </div>
-          <div style={{ width: "100%", display: "contents" }}>{auth ? <Event /> : null}</div>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            
-          </Routes>
+          {/* <div> */}
+          {auth ? <Profile auth={auth} onLoggedOut={handleLoggedOut} /> : null}
+          {/* </div> */}
+          {/* <div style={{ width: "100%", display: "contents" }}>
+            {auth ? <Event /> : null}
+          </div> */}
         </div>
-      </Router>
+        {/* <Routes>
+          <Route path="/">
+            <Route path="/eventTransaction" element={<EventTransaction />} />
+          </Route>
+        </Routes> */}
+      </BrowserRouter>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="App-title">Welcome to Web3 Blockchain Application</h1>

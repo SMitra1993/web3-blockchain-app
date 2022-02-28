@@ -1,8 +1,10 @@
+import { FaAngleLeft } from "react-icons/fa";
 import "./Event-Transaction.scss";
 
 import React, { useState, useEffect } from "react";
 // import Blockies from "react-blockies";
 import SmartContractAPIService from "../../Services/smart-contract-api";
+import { Link } from "react-router-dom";
 
 interface State {
   value: string;
@@ -32,21 +34,27 @@ export const EventTransaction = (): JSX.Element => {
   };
 
   return (
-    <div style={{ display: "inline-flex" }}>
+    <div>
       <br />
-      <form>
-        <label>
-          <input
-            className="form-control"
-            type="text"
-            value={state.value}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="button" onClick={handleSubmit}>
-          Submit
-        </button>
-      </form>
+      <Link to="/">
+        <FaAngleLeft className="icon-format" />
+      </Link>
+      <div style={{ display: "inline-flex" }}>
+        <br />
+        <form>
+          <label>
+            <input
+              className="form-control"
+              type="text"
+              value={state.value}
+              onChange={handleChange}
+            />
+          </label>
+          <button type="button" onClick={handleSubmit}>
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

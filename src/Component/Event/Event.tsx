@@ -73,9 +73,6 @@ export const Event = (): JSX.Element => {
           </div>
         </div>
       </Link>
-      <Routes>
-      <Route path="/eventTransaction" element={<EventTransaction />} />
-      </Routes>
     </div>
   );
 };

@@ -7,6 +7,9 @@ import React, { useState, useEffect } from "react";
 import { Auth } from "../../Interface/auth-interface";
 import SmartContractAPIService from "../../Services/smart-contract-api";
 import { Event } from "../Event/Event";
+import { Route, Routes } from "react-router-dom";
+import Home from "../Home/Home";
+import { EventTransaction } from "../Event-Transaction/Event-Transaction";
 
 interface Props {
   auth: Auth;
@@ -69,27 +72,26 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
     );
 
   return (
-    <div className="profile-infromation-format">
-      {/* <p>Logged in as {publicAddress}</p> */}
-      {/* My username is {username ? <pre>{username}</pre> : "not set."} My */}
-      <h2>
-        Connected to{" "}
-        {`${publicAddress.substring(0, 2)} ... ${publicAddress.substring(
-          publicAddress.length - 4,
-          publicAddress.length
-        )}`}
-      </h2>
-
-      {/* <div>
-        <label htmlFor="username">Change username: </label>
-        <input name="username" onChange={handleChange} />
-        <button disabled={loading} onClick={handleSubmit}>
-          Submit
-        </button>
-      </div> */}
-      {/* <p>
-        <button onClick={onLoggedOut}>Logout</button>
-      </p> */}
+    <div style={{ display: "contents" }}>
+      <div className="profile-information-box-format">
+        <div className="profile-infromation-format">
+          {/* <p>Logged in as {publicAddress}</p> */}
+          {/* My username is {username ? <pre>{username}</pre> : "not set."} My */}
+          <h2>
+            Connected to{" "}
+            {`${publicAddress.substring(0, 2)} ... ${publicAddress.substring(
+              publicAddress.length - 4,
+              publicAddress.length
+            )}`}
+          </h2>
+        </div>
+      </div>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Event />} />
+          <Route path="/eventTransaction" element={<EventTransaction />} />
+        </Route>
+      </Routes>
     </div>
   );
 };
